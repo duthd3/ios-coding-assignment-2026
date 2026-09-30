@@ -11,13 +11,7 @@ struct ContentView: View {
     let appContainer: AppContainer
 
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
-        }
-        .padding()
+        ProductListView(appContainer: appContainer)
     }
 }
 
