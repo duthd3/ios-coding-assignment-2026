@@ -62,11 +62,25 @@ struct ProductDetailView: View {
                 productImage(product)
 
                 VStack(alignment: .leading, spacing: 12) {
+                    if let brand = product.brand {
+                        Text(brand)
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    }
+
                     Text(product.name)
                         .font(.title2.bold())
 
                     Text(product.price, format: .currency(code: "USD"))
                         .font(.title3.weight(.semibold))
+
+                    Label {
+                        Text(product.rating, format: .number.precision(.fractionLength(1)))
+                    } icon: {
+                        Image(systemName: "star.fill")
+                            .foregroundStyle(.yellow)
+                    }
+                    .font(.subheadline.weight(.medium))
 
                     Text(product.description)
                         .font(.body)

@@ -22,6 +22,7 @@ struct ProductListView: View {
     }
 
     var body: some View {
+        // 기본 네비게이션 스택 사용
         NavigationStack {
             content
                 .navigationTitle("상품")

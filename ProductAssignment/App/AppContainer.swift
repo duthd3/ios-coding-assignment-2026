@@ -6,6 +6,7 @@
 //
 
 @MainActor
+// 앱 의존성 조립 컨테이너
 final class AppContainer {
     let productRepository: any ProductRepository
     let wishlistStore: WishlistStore

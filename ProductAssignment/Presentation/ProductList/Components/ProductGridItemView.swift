@@ -37,9 +37,18 @@ struct ProductGridItemView: View {
                         .font(.subheadline.weight(.semibold))
                         .lineLimit(2)
 
-                    Text(product.price, format: .currency(code: "USD"))
-                        .font(.caption)
-                        .foregroundStyle(.secondary)
+                    HStack(spacing: 6) {
+                        Text(product.price, format: .currency(code: "USD"))
+
+                        Label {
+                            Text(product.rating, format: .number.precision(.fractionLength(1)))
+                        } icon: {
+                            Image(systemName: "star.fill")
+                                .foregroundStyle(.yellow)
+                        }
+                    }
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
                 }
             }
             .buttonStyle(.plain)

@@ -23,9 +23,18 @@ struct ProductRowView: View {
                             .font(.headline)
                             .lineLimit(2)
 
-                        Text(product.price, format: .currency(code: "USD"))
-                            .font(.subheadline)
-                            .foregroundStyle(.secondary)
+                        HStack(spacing: 8) {
+                            Text(product.price, format: .currency(code: "USD"))
+
+                            Label {
+                                Text(product.rating, format: .number.precision(.fractionLength(1)))
+                            } icon: {
+                                Image(systemName: "star.fill")
+                                    .foregroundStyle(.yellow)
+                            }
+                        }
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
                     }
                 }
             }

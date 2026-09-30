@@ -11,7 +11,9 @@ nonisolated struct ProductDTO: Decodable, Sendable {
     let id: Int
     let title: String
     let description: String
+    let brand: String?
     let price: Decimal
+    let rating: Double
     let thumbnail: String
     let images: [String]
 
@@ -21,7 +23,9 @@ nonisolated struct ProductDTO: Decodable, Sendable {
             id: id,
             name: title,
             description: description,
+            brand: brand,
             price: price,
+            rating: rating,
             thumbnailURL: URL(string: thumbnail),
             imageURLs: images.compactMap { URL(string: $0) }
         )

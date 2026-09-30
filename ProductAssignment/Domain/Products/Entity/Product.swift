@@ -12,7 +12,9 @@ struct Product: Identifiable, Equatable, Sendable {
     let id: Int
     let name: String
     let description: String
+    let brand: String?
     let price: Decimal
+    let rating: Double
     let thumbnailURL: URL?
     let imageURLs: [URL]
 }
