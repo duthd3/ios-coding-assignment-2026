@@ -30,6 +30,10 @@ final class ProductDetailViewModel {
     }
 
     func loadProduct() async {
+        guard !isLoading else {
+            return
+        }
+
         isLoading = true
         errorMessage = nil
 
@@ -40,7 +44,7 @@ final class ProductDetailViewModel {
         do {
             product = try await productRepository.fetchProduct(id: productID)
         } catch {
-            errorMessage = error.localizedDescription
+            errorMessage = ErrorMessageMapper.message(for: error)
         }
     }
 

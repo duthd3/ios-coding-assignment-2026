@@ -28,6 +28,12 @@ final class ProductListViewModel {
     }
 
     func loadProducts() async {
+        // 중복 요청 방지
+        // @MainActor이기 때문에 isLoading 확인과 상태 변경이 한 실행 흐름에서 처리
+        guard !isLoading else {
+            return
+        }
+
         isLoading = true
         errorMessage = nil
 
@@ -38,7 +44,7 @@ final class ProductListViewModel {
         do {
             products = try await productRepository.fetchProducts()
         } catch {
-            errorMessage = error.localizedDescription
+            errorMessage = ErrorMessageMapper.message(for: error)
         }
     }
 

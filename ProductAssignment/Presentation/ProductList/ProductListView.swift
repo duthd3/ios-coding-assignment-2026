@@ -77,8 +77,9 @@ struct ProductListView: View {
                     isFavorite: viewModel.isFavorite(productID: product.id),
                     onFavoriteTapped: {
                         viewModel.toggleFavorite(productID: product.id)
-                    }
+                    },
                 )
+                .listRowSeparator(.hidden)
             }
             .listStyle(.plain)
 
