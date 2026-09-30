@@ -15,6 +15,7 @@ nonisolated struct ProductDTO: Decodable, Sendable {
     let thumbnail: String
     let images: [String]
 
+    // 현재 요구사항에서는 Mapper를 따로 두는것 보다 DTO에서 직접 변환해주면 충분
     func toEntity() -> Product {
         Product(
             id: id,
