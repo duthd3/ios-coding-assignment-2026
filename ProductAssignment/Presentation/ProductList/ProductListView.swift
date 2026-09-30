@@ -25,15 +25,15 @@ struct ProductListView: View {
         NavigationStack {
             content
                 .navigationTitle("상품")
+                .navigationDestination(for: Int.self) { productID in
+                    ProductDetailView(productID: productID, appContainer: appContainer)
+                }
                 .toolbar {
                     Button(action: viewModel.toggleLayout) {
                         Image(systemName: layoutButtonImageName)
                     }
                     .accessibilityLabel(layoutButtonAccessibilityLabel)
                 }
-        }
-        .navigationDestination(for: Int.self) { productID in
-            ProductDetailView(productID: productID, appContainer: appContainer)
         }
         .task {
             await viewModel.loadProducts()
